@@ -4,7 +4,8 @@ require (__DIR__.'./../lib/bootstrap.php');
     
 view('header'); ?>
 
-<h1>Hello</h1>
+<?php require_once('./home.php'); ?>
+
 
 
 <?php view('footer'); ?>

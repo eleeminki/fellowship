@@ -1,0 +1,13 @@
+
+/****** HEADER NAV BAR ************************/
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+
+/************** HERO IMAGE SECTION *************************/
+
+img {
+    max-height: 40%;
+}
