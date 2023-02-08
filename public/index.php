@@ -1,11 +1,9 @@
-<?php 
+<?php
 
-require (__DIR__.'./../lib/bootstrap.php'); 
-    
-view('header'); ?>
+require_once(__DIR__.'./../src/bootstrap.php');
 
-<?php require_once('./home.php'); ?>
+view('header');
 
+require_once('pages/home.php');
 
-
-<?php view('footer'); ?>
+view('footer');
