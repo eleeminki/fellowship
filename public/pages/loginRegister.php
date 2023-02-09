@@ -2,7 +2,7 @@
 
 require(__DIR__.'/../../src/bootstrap.php');
 view('header');
-
+echo is_post();
 ?>
 
 <div class="container">
@@ -37,30 +37,30 @@ view('header');
 
             <div class="col-4">
                 <h1>Register</h1>
-                <form class="row g-3" action="login.php" method="post">
+                <form class="row g-3" action="login.php" method="get">
                     <div class="col-md-6">
-                        <label for="regFirst" class="form-label">First Name</label>
-                        <input type="text" class="form-control"id="regFirst" placeholder="First Name" name="regFirst" aria-label="First Name">
+                        <label for="first2" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first2" placeholder="First Name" name="first2" aria-label="First Name">
                     </div>
                     <div class="col-md-6">
-                        <label for="regLast" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="regLast" id="regLast" aria-label="Last Name">
+                        <label for="last2" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name" name="last2" id="last2" aria-label="Last Name">
                     </div>
                     <div class="col-12">
-                        <label for="regEmail" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="regEmail" name="regEmail" aria-label="Register Email" placeholder="Email Address">
+                        <label for="email2" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email2" name="email2" aria-label="Register Email" placeholder="Email Address">
                     </div>
                     <div class="col-md-6">
-                        <label for="regPw" class="form-label">Password</label>
-                        <input type="password" class="form-control"id="regPw" placeholder="Password" name="regPw" aria-label="Password">
+                        <label for="pw2" class="form-label">Password</label>
+                        <input type="password" class="form-control"id="pw2" placeholder="Password" name="pw2" aria-label="Password">
                     </div>
                     <div class="col-md-6">
-                        <label for="regConPw" class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control"id="regConPw" placeholder="Confirm Password" name="regConPw" aria-label="Confirm Password">
+                        <label for="confirm2" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control"id="confirm2" placeholder="Confirm Password" name="confirm2" aria-label="Confirm Password">
                     </div>
                     <div class="col-md-4 form-check">
-                        <label class="form-check-label" for="botCheck">I am human check</label>
-                        <input type="checkbox" class="form-check-input" id="botCheck"> 
+                        <label class="form-check-label" for="bot2">I am human check</label>
+                        <input type="checkbox" class="form-check-input" id="bot2"> 
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Register</button>

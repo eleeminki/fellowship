@@ -1,6 +1,6 @@
 <?php
 
-/************ DUMP AND DIE ************************************** */
+  /********************** DUMP AND DIE  ***********************/
 
   function dd(array $data): void
   {
@@ -8,12 +8,17 @@
       die();
   }
 
-  /****************************** VIEW TEMPLATE ****************** */
-  
+  /********************** VIEW TEMPLATES ***********************/
+
   function view(string $url): void
   {
       require_once(__DIR__ .'/../../public/includes/'. $url . '.php');
   }
 
-  /********************** FORM PROCESS CHECK ********************* */
+  /********************** FORM PROCESS CHECK ***********************/
+
+  function is_post(): bool 
+  {
+        return strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
+  }
 
