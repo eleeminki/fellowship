@@ -69,6 +69,55 @@ function validate(array $data, array $fields, array $messages = []): array
 
 }
 
+/************************** RULE NAME HELPLER FUNCTIONS  ******************/
+
+function is_between():bool 
+{
+
+}
+
+function is_required():bool 
+{
+    
+}
+
+
+function is_email():bool 
+{
+    
+}
+
+
+function is_alphanumeric():bool 
+{
+    
+}
+
+function is_min():bool 
+{
+    
+}
+
+function is_max():bool 
+{
+    
+}
+
+
+function is_secure():bool 
+{
+    
+}
+
+function is_same():bool 
+{
+    
+}
+
+
+
+
+
 /************************** FILTER  ******************/
 
 function filter(array $data, array $fields, array $message = []): array
