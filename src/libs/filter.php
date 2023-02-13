@@ -1,4 +1,5 @@
 <?php
+
 const FILTERS = [
     'email' => FILTER_SANITIZE_EMAIL,
 
@@ -8,14 +9,12 @@ const FILTERS = [
 
 function sanitize(array $data, array $fields, array $filters = FILTERS): array
 {
-    if($fields) {
-        $options = array_map(fn($fieldType) => $filters[$fieldType], $fields);
+    if ($fields) {
+        $options = array_map(fn ($fieldType) => $filters[$fieldType], $fields);
         $sanitized = filter_var_array($data, $options);
         $trimmed = array_map('trim', $sanitized);
         return $trimmed;
-       
     }
-   
 }
 
 /************************* DEFAULT VALIDATION ERRORS *****************/
@@ -34,84 +33,96 @@ const DEFAULT_VALIDATION_ERRORS = [
 
 /************************** VALIDATE  ******************/
 
-function validate(array $data, array $fields, array $messages = []): array 
+function validate(array $data, array $fields, array $messages = []): array
 {
     $errors = [];
 
-    $custom_messages = array_filter($messages, fn($message) => is_string($message));
+    $custom_messages = array_filter($messages, fn ($message) => is_string($message));
     $validation_errors = array_merge(DEFAULT_VALIDATION_ERRORS, $custom_messages);
 
-    $rules_split = fn($separator, $str) => array_map('trim', explode($separator, $str));
+    $rules_split = fn ($separator, $str) => array_map('trim', explode($separator, $str));
 
-    foreach($fields as $fieldName => $fieldRule) {
+    foreach ($fields as $fieldName => $fieldRule) {
         $rules = $rules_split("|", $fieldRule);
-        foreach($rules as $rule) {
+        foreach ($rules as $rule) {
             $params = [];
-            if(strpos($rule, ':')){
+            if (strpos($rule, ':')) {
                 [$rule_name, $rule_params] = $rules_split(':', $rule);
                 $params = $rules_split(',', $rule_params);
-            }
-            else {
+            } else {
                 $rule_name = trim($rule);
             }
-            
+
             $fn = 'is_' .$rule_name;
-            if(is_callable($fn)) {
+            if (is_callable($fn)) {
                 $pass = $fn($data, $fieldName, ...$params);
-                if(!$pass) {
+                if (!$pass) {
                     $errors[$fieldName] = sprintf($messages[$fieldName][$rule_name] ?? $validation_errors[$rule_name], $fieldName, ...$params);
                 }
             }
         }
     }
-   
-    return $errors;
 
+    return $errors;
 }
 
 /************************** RULE NAME HELPLER FUNCTIONS  ******************/
 
-function is_between():bool 
+function is_required(array $data, string $fieldName): bool
 {
-
+    return isset($data[$fieldName]) && trim($data[$fieldName]) !== '';
 }
 
-function is_required():bool 
+function is_email(array $data, string $fieldName): bool
 {
-    
+    if (isset($data['email'])) {
+        return true;
+    }
+
+    return filter_var($data[$fieldName], FILTER_VALIDATE_EMAIL);
+}
+
+function is_alphanumeric(array $data, string $fieldName): bool
+{
+    if (ctype_alnum($data[$fieldName])) {
+        return true;
+    }
+}
+
+function is_between(array $data, string $fieldName, int $min, int $max): bool
+{
+    $length =  mb_strlen($data[$fieldName]);
+    return $length >= $min && $length <= $max;
+}
+
+function is_min(array $data, string $fieldName, int $min): bool
+{
+    $length =  mb_strlen($data[$fieldName]);
+    return $length >= $min;
+}
+
+function is_max(array $data, string $fieldName, int $max): bool
+{
+    $length =  mb_strlen($data[$fieldName]);
+    return $length >= $max;
 }
 
 
-function is_email():bool 
+function is_secure(array $data, string $fieldName): bool
 {
-    
+    $pattern = "#.*^(?=.{8,64})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#";
+    return preg_match($pattern, $data[$fieldName]);
 }
 
-
-function is_alphanumeric():bool 
+function is_same(array $data, string $fieldName, string $other): bool
 {
-    
+    if (isset($data[$fieldName], $other)) {
+        return $data[$fieldName] === $other;
+    }
 }
 
-function is_min():bool 
+function is_unique(array $data, string $fieldName, string $table, string $column): bool
 {
-    
-}
-
-function is_max():bool 
-{
-    
-}
-
-
-function is_secure():bool 
-{
-    
-}
-
-function is_same():bool 
-{
-    
 }
 
 
@@ -125,17 +136,14 @@ function filter(array $data, array $fields, array $message = []): array
     $sanitize_rules = [];
     $validate_rules = [];
 
-    foreach($fields as $field => $rules) {
-        if(strpos($rules, '|')) {
+    foreach ($fields as $field => $rules) {
+        if (strpos($rules, '|')) {
             [$sanitize_rules[$field], $validate_rules[$field]] = explode('|', $rules, 2);
-        }
-        else {
-            $sanitize_rules[$field] = $rules; 
+        } else {
+            $sanitize_rules[$field] = $rules;
         }
     }
 
     $input = sanitize($data, $sanitize_rules);
     return $input;
-    
-
 }
