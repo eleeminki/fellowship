@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__.'/../../config/database.php';
+
 const FILTERS = [
     'email' => FILTER_SANITIZE_EMAIL,
 
@@ -121,8 +123,29 @@ function is_same(array $data, string $fieldName, string $other): bool
     }
 }
 
+function db(): PDO
+ {
+    static $pdo;
+    if(!$pdo) {
+        return new PDO(
+            sprintf("mysql:host=%s;dbname=%s;charset=UTF8", DB_HOST, DB_NAME),
+            DB_USER,
+            DB_PASSWORD,
+            [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+        );
+    }
+    return $pdo;
+}
+
+
 function is_unique(array $data, string $fieldName, string $table, string $column): bool
 {
+    $sql = "SELECT $column FROM $table WHERE $column = :value";
+
+    $stmt = db()->prepare($sql);
+    $stmt->bindValue(":value", $data[$fieldName]);
+    $stmt->execute();
+    return $stmt->fetchColumn() === false;
 }
 
 
