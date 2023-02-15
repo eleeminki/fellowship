@@ -17,8 +17,26 @@
 
   /********************** FORM PROCESS CHECK ***********************/
 
-  function is_post(): bool 
+  function is_post(): bool
   {
-        return strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
+      return strtoupper($_SERVER['REQUEST_METHOD']) === 'POST';
   }
 
+
+  /************************** REDIRECT TO *************************/
+
+  function redirect_to(string $url): void
+  {
+      header('Location:'. $url);
+      exit;
+  }
+
+  /************************** REDIRECT WITH **********************/
+
+  function redirect_with(string $url, array $items): void
+  {
+      foreach ($items as $key => $value) {
+          $_SESSION[$key] = $value;
+      }
+      redirect_to($url);
+  }
