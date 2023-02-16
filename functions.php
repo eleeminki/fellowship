@@ -12,7 +12,7 @@
 
   function view(string $url): void
   {
-      require_once(__DIR__ .'/../../public/includes/'. $url . '.php');
+      require_once(__DIR__ .'/views/partials/'. $url . '.php');
   }
 
   /********************** FORM PROCESS CHECK ***********************/
@@ -28,7 +28,7 @@
   function redirect_to(string $url): void
   {
       header('Location:'. $url);
-      exit;
+      exit();
   }
 
   /************************** REDIRECT WITH **********************/

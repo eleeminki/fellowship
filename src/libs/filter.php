@@ -1,5 +1,5 @@
 <?php
-//  require_once(__DIR__.'/helper.php');
+
 /************************** FILTER  ******************/
 
 function filter(array $data, array $fields, array $messages = []): array
@@ -16,7 +16,7 @@ function filter(array $data, array $fields, array $messages = []): array
     }
            
     $inputs = sanitize($data, array_map('trim', $sanitize_rules));
-  
+    // dd($validate_rules);
     $errors = validate($inputs, $validate_rules, $messages);
 
     return [$inputs, $errors];

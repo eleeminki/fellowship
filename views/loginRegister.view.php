@@ -1,11 +1,11 @@
 <?php
 
 require(__DIR__.'/../../src/bootstrap.php');
-require(__DIR__.'/../../src/controllers/registerController.php');
-view('header');
-
-
+require(__DIR__.'/../../src/register.php');
+view('header'); 
 ?>
+
+
 
 <div class="container">
     <div class="container text-center" style="background-color:#7DB2CC;" >
@@ -13,7 +13,7 @@ view('header');
 
     <!-------------- LOGIN FORM COL  --------------------->
 
-            <div class="col-4">
+            <!-- <div class="col-4">
                 <h1>Login</h1> 
                     <form>
                         <div class="mb-3">
@@ -31,7 +31,7 @@ view('header');
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-            </div>
+            </div> -->
             
 <!------------------ END ------------------------>
 
