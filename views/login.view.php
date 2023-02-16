@@ -1,7 +1,5 @@
 <?php
-
-require(__DIR__.'/../../src/bootstrap.php');
-require(__DIR__.'/../../src/register.php');
+require_once(__DIR__.'/../functions.php');  
 view('header'); 
 ?>
 
@@ -13,7 +11,7 @@ view('header');
 
     <!-------------- LOGIN FORM COL  --------------------->
 
-            <!-- <div class="col-4">
+            <div class="col-4">
                 <h1>Login</h1> 
                     <form>
                         <div class="mb-3">
@@ -31,7 +29,7 @@ view('header');
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
-            </div> -->
+            </div>
             
 <!------------------ END ------------------------>
 

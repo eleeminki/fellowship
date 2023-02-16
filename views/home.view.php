@@ -1,4 +1,6 @@
-
+<?php 
+require_once(__DIR__.'/../functions.php');  
+view('header');  ?>
 
   <!-----------------  HERO SECTION  -------------------------------->
 
@@ -84,3 +86,4 @@
   </div>
 </div>
 
+<?php view('footer');

@@ -4,7 +4,9 @@
 
   function dd(array $data): void
   {
-      echo '<pre>' .var_dump($data) . '</pre>';
+    echo '<pre>';
+    var_dump($data);
+    echo '</pre>';
       die();
   }
 
@@ -12,7 +14,7 @@
 
   function view(string $url): void
   {
-      require_once(__DIR__ .'/views/partials/'. $url . '.php');
+      require_once('views/partials/'. $url . '.view.php');
   }
 
   /********************** FORM PROCESS CHECK ***********************/

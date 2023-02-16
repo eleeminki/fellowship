@@ -1,9 +1,14 @@
 <?php
 
-require_once(__DIR__.'/bootstrap.php');
+require_once('functions.php');
 
-view('header'); ?>
+$uri = $_SERVER['REQUEST_URI'];
 
-<?php require_once(__DIR__.'/views/home.php'); ?>
-
-<?php view('footer'); ?>
+// dd($_SERVER);
+if ($uri === '/fellowship/') {
+    require_once('controllers/home.php');
+} elseif ($uri === '/fellowship/login') {
+    // dd($_SERVER);
+    // require_once('controllers/home.php');
+    require_once('controllers/login.php');
+}
