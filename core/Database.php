@@ -16,11 +16,11 @@ class Database
             ]
         );
     }
-    function query(string $sql)
+    function query(string $sql, $params = [])
     {
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->execute();
+        $stmt->execute($params);
 
         return $stmt;
     }

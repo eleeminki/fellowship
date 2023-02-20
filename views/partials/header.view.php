@@ -50,7 +50,7 @@
                         <a class="navbar-brand nav-link active" aria-current="page" href="#">Meetups</a>
                         </li>
                         <li class="nav-item">
-                        <a class="navbar-brand nav-link active" aria-current="page" href="#">Market</a>
+                        <a class="navbar-brand nav-link active" aria-current="page" href="/fellowship/market">Market</a>
                         </li>
                         <li class="nav-item">
                         <a class="navbar-brand nav-link active" aria-current="page" href="#">Jobs</a>
