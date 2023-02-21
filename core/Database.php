@@ -1,9 +1,9 @@
 <?php
-$config = require_once('config/config.php');
+
 class Database
 {
     public $pdo;
-    public function __construct(array $config, string $user, string $pw)
+    public function __construct(array $config, string $user = 'root', string $pw = '')
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
         $this->pdo = new PDO(
