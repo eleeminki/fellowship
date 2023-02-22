@@ -3,6 +3,7 @@
 class Database
 {
     public $pdo;
+   private $stmt;
     public function __construct(array $config, string $user = 'root', string $pw = '')
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
@@ -16,12 +17,22 @@ class Database
             ]
         );
     }
-    function query(string $sql, $params = [])
+    public function query(string $sql, $params = [])
     {
 
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->execute($params);
+        $this->stmt = $this->pdo->prepare($sql);
+        $this->stmt = $this->stmt->execute($params);
 
-        return $stmt;
+        return $this;
+    }
+
+    public function fetch()
+    {
+        $this->stmt->fetch();
+        if (!$this->stmt) {
+            abort(Response::NOT_FOUND);
+        } elseif ($this->stmt['user_id'] !== $_GET['user']) {
+            abort(Response::FORBIDDEN);
+        }
     }
 }

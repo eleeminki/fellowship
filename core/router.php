@@ -8,13 +8,12 @@ $routes = [
     '/fellowship/login' => 'controllers/login.php',
     '/fellowship/markets' => 'controllers/markets.php',
     '/fellowship/market' => 'controllers/market.php',
-    '404' => 'views/404.php'
 ];
 
-function abort(array $routes)
+function abort(string $error)
 {
-    http_response_code(404);
-    require_once($routes['404']);
+    http_response_code($error);
+    require_once(__DIR__ . '/../views/' . $error . '.php');
     die();
 }
 
@@ -23,7 +22,7 @@ function routeController(string $uri, array $routes)
     if (array_key_exists($uri, $routes)) {
         require_once($routes[$uri]);
     } else {
-        abort($routes);
+        abort(Response::NOT_FOUND);
     }
 }
 

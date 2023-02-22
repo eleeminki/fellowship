@@ -9,8 +9,8 @@
                 <?php foreach ($markets as $post) { ?>
                     <ul>
                         <li>
-                            <a href="/fellowship/market?id=<?= $post['user_id'] ?>">View Post</a>
-                            <?php echo $post['id'] ?>
+                            <a href="/fellowship/market?id=<?= $post['id'] ?>&user=<?= $post['user_id'] ?>">View Post</a>
+                            <?php echo $post['user_id'] ?>
                             <?php echo $post['title'] ?>
                         </li>
                     </ul>
