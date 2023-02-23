@@ -1,14 +1,6 @@
 <?php
-
+$routes = require_once('routes.php');
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
-
-
-$routes = [
-    '/fellowship/' => 'controllers/home.php',
-    '/fellowship/login' => 'controllers/login.php',
-    '/fellowship/markets' => 'controllers/markets.php',
-    '/fellowship/market' => 'controllers/market.php',
-];
 
 function abort(string $error)
 {

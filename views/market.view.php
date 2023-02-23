@@ -7,13 +7,11 @@
             <div class="col-4">
                 <a href="/fellowship/markets">Go Back.</a>
                 <h1>
-                    <?php echo $marketPost['title'] ?>
+                    <?= htmlspecialchars($item['title']) ?>
                 </h1>
                 <p>
-                    <?php echo $marketPost['description'] ?>
+                    <?= htmlspecialchars($item['description']) ?>
                 </p>
-
-
             </div>
         </div>
     </div>

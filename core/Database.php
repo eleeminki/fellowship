@@ -3,7 +3,7 @@
 class Database
 {
     public $pdo;
-   private $stmt;
+    public $stmt;
     public function __construct(array $config, string $user = 'root', string $pw = '')
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
@@ -19,20 +19,50 @@ class Database
     }
     public function query(string $sql, $params = [])
     {
-
         $this->stmt = $this->pdo->prepare($sql);
-        $this->stmt = $this->stmt->execute($params);
-
+        $this->stmt->execute($params);
         return $this;
     }
 
-    public function fetch()
+    public function exists($record)
     {
-        $this->stmt->fetch();
-        if (!$this->stmt) {
+        if (!$record) {
             abort(Response::NOT_FOUND);
-        } elseif ($this->stmt['user_id'] !== $_GET['user']) {
+        }
+    }
+    public function authorize($condition)
+    {
+        if ($condition) {
             abort(Response::FORBIDDEN);
         }
+    }
+    public function findAll()
+    {
+        return $this->stmt->fetchAll();
+    }
+
+    public function fetchAllOrAbort()
+    {
+        $rows = $this->findAll();
+        $this->exists($rows);
+        return $rows;
+    }
+
+    public function find()
+    {
+        return $this->stmt->fetch();
+    }
+
+    public function fetchOrAbort()
+    {
+        $row = $this->find();
+        $this->exists($row);
+        $this->authorize($row['user_id'] != 1);
+        return $row;
+    }
+
+    public function successPost()
+    {
+        echo "SUCESSFULLY POSTED CHECK DB";
     }
 }

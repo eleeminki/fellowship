@@ -4,14 +4,18 @@
 <div class="container">
     <div class="container text-center" style="background-color:#7DB2CC;">
         <div class="row justify-content-around">
+             <div class="col-4">
+             <a href="/fellowship/market/post"><h1>Post Item</h1></a>
+             </div>
+            <!--------------- MARKET LIST ----------------------------------->
             <div class="col-4">
                 <h1>Market View</h1>
-                <?php foreach ($markets as $post) { ?>
+                <?php foreach ($marketItems as $item) { ?>
                     <ul>
                         <li>
-                            <a href="/fellowship/market?id=<?= $post['id'] ?>&user=<?= $post['user_id'] ?>">View Post</a>
-                            <?php echo $post['user_id'] ?>
-                            <?php echo $post['title'] ?>
+                            <a href="/fellowship/market?id=<?= $item['id'] ?>&user=<?= $item['user_id'] ?>">View item</a>
+                            <?= htmlspecialchars($item['user_id']); ?>
+                            <?= htmlspecialchars($item['title']); ?>
                         </li>
                     </ul>
                 <?php } ?>
