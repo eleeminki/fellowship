@@ -61,6 +61,10 @@ class Database
         return $row;
     }
 
+    public function findCol()
+    {
+        return $this->stmt->fetchColumn();
+    }
     public function successPost()
     {
         echo "SUCESSFULLY POSTED CHECK DB";

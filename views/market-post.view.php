@@ -13,17 +13,18 @@
                     <div class="col-12">
                         <label for="itemTitle" class="form-label">Title</label>
                         <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
-                            value="<?php isset($_POST['itemTitle']) ? htmlspecialchars($_POST['itemTitle'], ENT_QUOTES) : '' ?>"
+                            value="<?php isset($_POST['itemTitle']) ? htmlspecialchars($_POST['itemTitle']) : '' ?>"
                             placeholder="Enter Title" required>
                         <small>
-                            <?= $errors['itemTitle'] ?? '' ?>
+                            <?= $errors['itemTitle'] ?? '' ?>f
                         </small>
                     </div>
                     <div class="col-12">
                         <label for="itemDescription" class="form-label">Description</label>
                         <textarea class="form-control" id="itemDescription" name="itemDescription"
-                            aria-label="Item Description" placeholder="Enter Description" rows="5" cols="33"
-                            required></textarea>
+                            aria-label="Item Description"
+                            value="<?php isset($_POST['itemDescription']) ? htmlspecialchars($_POST['itemDescription']) : '' ?>"
+                            placeholder="Enter Description" rows="5" cols="33" required></textarea>
                         <small>
                             <?= $errors['itemDescription'] ?? '' ?>
                         </small>
