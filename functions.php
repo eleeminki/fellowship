@@ -35,10 +35,10 @@
 
   /************************** REDIRECT WITH **********************/
 
-  function redirect_with(string $url, array $items): void
+  function redirect_with(array $items): void
   {
       foreach ($items as $key => $value) {
           $_SESSION[$key] = $value;
       }
-      redirect_to($url);
+    //   redirect_to($url);
   }

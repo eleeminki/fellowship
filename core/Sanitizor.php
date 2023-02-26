@@ -1,12 +1,18 @@
 <?php
-$filters = require_once('/sanitization.php');
+
 class Sanitizor
 {
-    public function sanitize(array $data, array $fields, array $filters = $filters): array
+    public static function sanitizor(array $data, array $fields, array $sanFilters): array
     {
-        $options = array_map(fn($field) => $filters[$field], $fields);
-        $sanitized = filter_var_array($data, $options);
-        $trimmed = array_map('trim', $sanitized);
-        return $trimmed;
+            foreach($fields as $field => $rule) {
+                $options = [];
+                if(isset($sanFilters[$rule])) {
+                    $options[$field] = $sanFilters[$rule];
+                }
+            }
+            $sanitized = filter_var_array($data, $options);
+            $trimmed = array_map('trim', $sanitized);
+            return $trimmed;
+        
     }
 }

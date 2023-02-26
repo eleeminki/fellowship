@@ -1,9 +1,9 @@
 <?php
 $config = require_once(__DIR__ . '/../config/config.php');
-$errorMsgs = require_once('/validation.php');
+
 class Validator
 {
-    public static function validator(array $data, array $fields, array $errorMsgs = $errrorMsgs): array
+    public static function validator(array $data, array $fields, array $errorMsgs): array
     {
         $errors = [];
 
@@ -24,8 +24,9 @@ class Validator
 
                 if (is_callable($helperFn)) {
                     $pass = $helperFn($data, $field, ...$params);
-                } else {
-                    $errors[$field] = sprintf($errorMsgs[$ruleName], $field, ...$params);
+                    if (!$pass) {
+                        $errors[$field] = sprintf($errorMsgs[$ruleName], $field, ...$params);
+                    }
                 }
             }
         }

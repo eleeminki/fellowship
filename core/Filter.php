@@ -1,0 +1,24 @@
+<?php
+require_once(__DIR__ . '/Sanitizor.php');
+require_once(__DIR__ . '/Validator.php');
+
+class Filter
+{
+    public function filter(array $data, array $fields, array $errorMsgs, array $sanFilters): array
+    {
+
+        $sanitize_rules = [];
+        $validate_rules = [];
+
+        foreach ($fields as $field => $fieldRule) {
+            if (strpos($fieldRule, "|")) {
+                [$sanitize_rules[$field], $validate_rules[$field]] = explode('|', $fieldRule, 2);
+            }
+        }
+
+        $inputs = Sanitizor::sanitizor($data, array_map('trim', $sanitize_rules), $sanFilters);
+        $errors = Validator::validator($data, $validate_rules, $errorMsgs);
+
+        return [$inputs, $errors];
+    }
+}

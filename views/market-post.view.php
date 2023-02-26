@@ -1,6 +1,5 @@
 <?php view('header') ?>
 
-
 <div class="container">
     <div class="container text-center" style="background-color:#7DB2CC;">
         <div class="row justify-content-around">
@@ -16,7 +15,7 @@
                             value="<?php isset($_POST['itemTitle']) ? htmlspecialchars($_POST['itemTitle']) : '' ?>"
                             placeholder="Enter Title" required>
                         <small>
-                            <?= $errors['itemTitle'] ?? '' ?>f
+                            <?= $errors['itemTitle'] ?? '' ?>
                         </small>
                     </div>
                     <div class="col-12">
@@ -33,6 +32,9 @@
                     <div class="col-md-4 form-check">
                         <label class="form-check-label" for="itemUserId">itemUserId foreign_key</label>
                         <input type="text" name="itemUserId" class="form-check-input" id="itemUserId" required>
+                        <small>
+                            <?= $errors['itemUserId'] ?? '' ?>
+                        </small>
                     </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Post</button>
@@ -51,10 +53,9 @@
                     <li>
                         <a href="#">View item</a>
                         <?php echo 'Item info'; ?>
-
+                        <?= dd($_SESSION) ?? '' ?>
                     </li>
                 </ul>
-
             </div>
         </div>
     </div>

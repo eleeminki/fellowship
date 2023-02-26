@@ -67,6 +67,7 @@ class Database
     }
     public function successPost()
     {
+        // redirect_to(pathinfo($_SERVER['REQUEST_URI'], PATHINFO_BASENAME));
         echo "SUCESSFULLY POSTED CHECK DB";
     }
 }
