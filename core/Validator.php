@@ -22,8 +22,8 @@ class Validator
 
                 $helperFn = 'is_' . $ruleName;
 
-                if (is_callable($helperFn)) {
-                    $pass = $helperFn($data, $field, ...$params);
+                if (is_callable(array('Validator', $helperFn))) {
+                    $pass = Validator::$helperFn($data, $field, ...$params);
                     if (!$pass) {
                         $errors[$field] = sprintf($errorMsgs[$ruleName], $field, ...$params);
                     }
@@ -33,43 +33,43 @@ class Validator
         return $errors;
     }
 
-    public function is_required(array $data, string $field): bool
+    public static function is_required(array $data, string $field): bool
     {
         return isset($data[$field]) && trim($data[$field]) !== '';
     }
 
-    public function is_email(array $data, string $field): bool
+    public static function is_email(array $data, string $field): bool
     {
         return isset($data[$field]) && filter_var(trim($data[$field]), FILTER_VALIDATE_EMAIL);
     }
 
-    public function is_min(array $data, string $field, int $min): bool
+    public static function is_min(array $data, string $field, int $min): bool
     {
         return isset($data[$field]) && strlen(trim($data[$field])) >= $min;
     }
 
-    public function is_max(array $data, string $field, int $max): bool
+    public static function is_max(array $data, string $field, int $max): bool
     {
         return isset($data[$field]) && strlen(trim($data[$field])) <= $max;
     }
-    public function is_between(array $data, string $field, array $range): bool
+    public static function is_between(array $data, string $field, int $min, int $max): bool
     {
-        return isset($data[$field]) && strlen(trim($data[$field])) >= $range[0] && strlen(trim($data[$field])) <= $range[1];
+        return isset($data[$field]) && strlen(trim($data[$field])) >= $min && strlen(trim($data[$field])) <= $max;
     }
-    public function is_same(array $data, string $field, string $other): bool
+    public static function is_same(array $data, string $field, string $other): bool
     {
         return isset($data[$field]) && (trim($data[$field])) === trim($other);
     }
-    public function is_alphanumeric(array $data, string $field): bool
+    public static function is_alphanumeric(array $data, string $field): bool
     {
         return isset($data[$field]) && ctype_alnum(trim($data[$field]));
     }
-    public function is_secure(array $data, string $field): bool
+    public static function is_secure(array $data, string $field): bool
     {
         $pattern = "#.*^(?=.{8,64})(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*\W).*$#";
         return isset($data[$field]) && preg_match($pattern, (trim($data[$field])));
     }
-    public function is_unique(array $data, string $field, array $config, string $table, string $column): bool
+    public static function is_unique(array $data, string $field, array $config, string $table, string $column): bool
     {
         $db = new Database($config['database'], DB_USER, DB_PASSWORD);
         return isset($data[$field]) && $db->query(
