@@ -10,12 +10,13 @@ function dd(array $data): void
   die();
 }
 
-/********************** VIEW TEMPLATES ***********************/
+/********************** VIEW HELPER ***********************/
 
 function view(string $url): void
 {
   require_once('views/partials/' . $url . '.view.php');
 }
+
 
 /********************** FORM PROCESS CHECK ***********************/
 

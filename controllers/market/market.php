@@ -1,6 +1,6 @@
 <?php
 
-$config = require_once(__DIR__ . '/../config/config.php');
+$config = require_once(__DIR__ . '/../../config/config.php');
 $db = new Database($config['database'], DB_USER, DB_PASSWORD);
 
 $item = $db->query(
@@ -12,4 +12,4 @@ $item = $db->query(
 )->fetchOrAbort();
 
 
-require_once(__DIR__ . '/../views/market.view.php');
+require_once('views/market/market.view.php');

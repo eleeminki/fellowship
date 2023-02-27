@@ -1,8 +1,8 @@
 <?php
 return [
-    '/fellowship/' => 'controllers/home.php',
-    '/fellowship/login' => 'controllers/login.php',
-    '/fellowship/markets' => 'controllers/markets.php',
-    '/fellowship/market' => 'controllers/market.php',
-    '/fellowship/market/post' => 'controllers/market-post.php'
+    '/fellowship/' => 'controllers/home/home.php',
+    '/fellowship/login' => 'controllers/login/login.php',
+    '/fellowship/markets' => 'controllers/market/markets.php',
+    '/fellowship/market' => 'controllers/market/market.php',
+    '/fellowship/market/post' => 'controllers/market/market-post.php'
 ];

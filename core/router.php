@@ -5,7 +5,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 function abort(string $error)
 {
     http_response_code($error);
-    require_once(__DIR__ . '/../views/' . $error . '.php');
+    require_once('views/' . $error . '.php');
     die();
 }
 

@@ -1,12 +1,13 @@
-<?php view('header') ?>
-
+<?php view('header')  ?>
 
 <div class="container">
     <div class="container text-center" style="background-color:#7DB2CC;">
         <div class="row justify-content-around">
-             <div class="col-4">
-             <a href="/fellowship/market/post"><h1>Post Item</h1></a>
-             </div>
+            <div class="col-4">
+                <a href="/fellowship/market/post">
+                    <h1>Post Item</h1>
+                </a>
+            </div>
             <!--------------- MARKET LIST ----------------------------------->
             <div class="col-4">
                 <h1>Market View</h1>
