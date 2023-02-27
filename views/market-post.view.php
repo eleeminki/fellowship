@@ -12,7 +12,7 @@
                     <div class="col-12">
                         <label for="itemTitle" class="form-label">Title</label>
                         <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
-                            value="<?php isset($_POST['itemTitle']) ? htmlspecialchars($_POST['itemTitle']) : '' ?>"
+                            value="<?php isset($_POST['i temTitle']) ? htmlspecialchars($_POST['itemTitle']) : $_SESSION['inputs']['itemTitle']; ?>"
                             placeholder="Enter Title" required>
                         <small>
                             <?= $errors['itemTitle'] ?? '' ?>
@@ -53,7 +53,7 @@
                     <li>
                         <a href="#">View item</a>
                         <?php echo 'Item info'; ?>
-                        <?= dd($_SESSION) ?? '' ?>
+                        <?= dd($_SESSION['input']) ?? '' ?>
                     </li>
                 </ul>
             </div>
