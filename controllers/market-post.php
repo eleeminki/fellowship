@@ -27,4 +27,11 @@ if (is_post()) {
     }
 }
 
+if(is_get()){
+    $userPost = $db->query('SELECT * FROM market WHERE user_id = :uId', [
+           'uId' => $_SESSION['inputs']['itemUserId'],
+        ])->fetchAllOrAbort();
+}
+
+
 require_once(__DIR__ . '/../views/market-post.view.php');

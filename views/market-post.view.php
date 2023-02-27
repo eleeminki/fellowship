@@ -11,19 +11,35 @@
                 <form class="row g-3" method="post">
                     <div class="col-12">
                         <label for="itemTitle" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
-                            value="<?php isset($_POST['i temTitle']) ? htmlspecialchars($_POST['itemTitle']) : $_SESSION['inputs']['itemTitle']; ?>"
-                            placeholder="Enter Title" required>
+                        <?php if (!isset($_POST['itemTitle'])) { ?>
+                            <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
+                                value="" placeholder="Enter Title" required>
+                        <?php } elseif (isset($_POST['itemTitle']) && !$errors['itemTitle']) { ?>
+                            <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
+                                value="<?= htmlspecialchars($_POST['itemTitle']); ?>" placeholder="Enter Title" required>
+                        <?php } elseif ($errors['itemTitle']) { ?>
+                            <input type="text" class="form-control" id="itemTitle" name="itemTitle" aria-label="Item Title"
+                                value="<?= $_SESSION['inputs']['itemTitle']; ?>" placeholder="Enter Title" required>
+                        <?php } ?>
                         <small>
                             <?= $errors['itemTitle'] ?? '' ?>
                         </small>
                     </div>
                     <div class="col-12">
                         <label for="itemDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="itemDescription" name="itemDescription"
-                            aria-label="Item Description"
-                            value="<?php isset($_POST['itemDescription']) ? htmlspecialchars($_POST['itemDescription']) : '' ?>"
-                            placeholder="Enter Description" rows="5" cols="33" required></textarea>
+                        <?php if (!isset($_POST['itemDescription'])) { ?>
+                            <textarea class="form-control" id="itemDescription" name="itemDescription"
+                                aria-label="Item Description" value="" placeholder="Enter Description" rows="5" cols="33"
+                                required></textarea>
+                        <?php } elseif (isset($_POST['itemDescription']) && !$errors['itemDescription']) { ?>
+                            <textarea class="form-control" id="itemDescription" name="itemDescription"
+                                aria-label="Item Description" value="<?= htmlspecialchars($_POST['itemDescription']); ?>"
+                                placeholder="Enter Description" rows="5" cols="33" required></textarea>
+                        <?php } elseif ($errors['itemDescription']) { ?>
+                            <textarea class="form-control" id="itemDescription" name="itemDescription"
+                                aria-label="Item Description" placeholder="Enter Description" rows="5" cols="33"
+                                required><?= $_SESSION['inputs']['itemDescription']; ?></textarea>
+                        <?php } ?>
                         <small>
                             <?= $errors['itemDescription'] ?? '' ?>
                         </small>
@@ -46,16 +62,20 @@
 
             <!--------------- MARKET LIST ----------------------------------->
             <div class="col-4">
-                <h1>Your Items DashBoard</h1>
-                <?php
-                echo 'yor posted items list'; ?>
-                <ul>
-                    <li>
-                        <a href="#">View item</a>
-                        <?php echo 'Item info'; ?>
-                        <?= dd($_SESSION['input']) ?? '' ?>
-                    </li>
-                </ul>
+                <h1>Your Items Dashboard</h1>
+                <?php foreach ($userPost as $post) { ?>
+                    <ul>
+                        <li>
+                            <a href="/fellowship/market?id=<?= $post['id'] ?>&user=<?= $post['user_id'] ?>">View item</a>
+                            <h2>
+                                <?= htmlspecialchars($post['title']); ?>
+                            </h2>
+                            <p>
+                                <?= htmlspecialchars($post['description']); ?>
+                            </p>
+                        </li>
+                    </ul>
+                <?php } ?>
             </div>
         </div>
     </div>
