@@ -20,3 +20,5 @@ function routeController(string $uri, array $routes)
 
 
 routeController($uri, $routes);
+
+?>

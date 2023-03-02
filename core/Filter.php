@@ -22,3 +22,5 @@ class Filter
         return [$inputs, $errors];
     }
 }
+
+?>

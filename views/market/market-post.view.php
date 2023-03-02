@@ -63,18 +63,20 @@
             <!--------------- MARKET LIST ----------------------------------->
             <div class="col-4">
                 <h1>Your Items Dashboard</h1>
-                <?php foreach ($userPost as $post) { ?>
-                    <ul>
-                        <li>
-                            <a href="/fellowship/market?id=<?= $post['id'] ?>&user=<?= $post['user_id'] ?>">View item</a>
-                            <h2>
-                                <?= htmlspecialchars($post['title']); ?>
-                            </h2>
-                            <p>
-                                <?= htmlspecialchars($post['description']); ?>
-                            </p>
-                        </li>
-                    </ul>
+                <?php if (isset($userPost)) { ?>
+                    <?php foreach ($userPost as $post) { ?>
+                        <ul>
+                            <li>
+                                <a href="/fellowship/market?id=<?= $post['id'] ?>&user=<?= $post['user_id'] ?>">View item</a>
+                                <h2>
+                                    <?= htmlspecialchars($post['title']); ?>
+                                </h2>
+                                <p>
+                                    <?= htmlspecialchars($post['description']); ?>
+                                </p>
+                            </li>
+                        </ul>
+                    <?php } ?>
                 <?php } ?>
             </div>
         </div>

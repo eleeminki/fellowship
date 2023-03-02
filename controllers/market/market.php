@@ -13,3 +13,5 @@ $item = $db->query(
 
 
 require_once('views/market/market.view.php');
+
+?>

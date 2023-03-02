@@ -13,3 +13,5 @@ return [
     'secure' => 'The %s must have between 8 and 64 characters and contain at least one number, one uppercase, and one special character',
     'unique' => 'The %s already exists',
 ];
+
+?>

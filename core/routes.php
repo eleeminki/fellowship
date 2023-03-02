@@ -6,3 +6,5 @@ return [
     '/fellowship/market' => 'controllers/market/market.php',
     '/fellowship/market/post' => 'controllers/market/market-post.php'
 ];
+
+?>

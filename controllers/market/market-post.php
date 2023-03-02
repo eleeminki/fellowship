@@ -1,8 +1,8 @@
 <?php
-$config = require_once(__DIR__ . '/../../config/config.php');
+$config = require_once('config/config.php');
 $db = new Database($config['database'], DB_USER, DB_PASSWORD);
-$sanFilters = require_once(__DIR__ . '/../../core/sanitization.php');
-$errorMsgs = require_once(__DIR__ . '/../../core/validation.php');
+$sanFilters = require_once('core/sanitization.php');
+$errorMsgs = require_once('core/validation.php');
 require_once('core/Filter.php');
 $filter = new Filter();
 
@@ -11,6 +11,13 @@ $postFieldRules = [
     "itemDescription" => "string | required | between: 8,255",
     "itemUserId" => "number_int | required"
 ];
+
+
+if (is_get() && isset($_SESSION['inputs'])) {
+    $userPost = $db->query('SELECT * FROM market WHERE user_id = :uId', [
+        'uId' => $_SESSION['inputs']['itemUserId'],
+    ])->fetchAllOrAbort();
+}
 
 if (is_post()) {
 
@@ -27,11 +34,6 @@ if (is_post()) {
     }
 }
 
-if(is_get()){
-    $userPost = $db->query('SELECT * FROM market WHERE user_id = :uId', [
-           'uId' => $_SESSION['inputs']['itemUserId'],
-        ])->fetchAllOrAbort();
-}
-
-
 require_once('views/market/market-post.view.php');
+
+?>

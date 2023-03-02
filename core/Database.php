@@ -72,3 +72,5 @@ class Database
         return true;
     }
 }
+
+?>
