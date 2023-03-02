@@ -14,7 +14,7 @@ function dd(array $data): void
 
 function view(string $url): void
 {
-  require_once('views/partials/' . $url . '.view.php');
+  require_once(__DIR__ . '/../views/partials/' . $url . '.view.php');
 }
 
 

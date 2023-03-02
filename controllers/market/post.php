@@ -1,9 +1,9 @@
 <?php
-$config = require_once('config/config.php');
+$config = require_once(__DIR__ . '/../../config/config.php');
 $db = new Database($config['database'], DB_USER, DB_PASSWORD);
-$sanFilters = require_once('core/sanitization.php');
-$errorMsgs = require_once('core/validation.php');
-require_once('core/Filter.php');
+$sanFilters = require_once(__DIR__ . '/../../core/libs/sanitize/sanitization.php');
+$errorMsgs = require_once(__DIR__ . '/../../core/libs/validate/validation.php');
+require_once(__DIR__ . '/../../core/libs/filter/Filter.php');
 $filter = new Filter();
 
 $postFieldRules = [
@@ -34,6 +34,6 @@ if (is_post()) {
     }
 }
 
-require_once('views/market/market-post.view.php');
+require_once(__DIR__ . '/../../views/market/post.view.php');
 
 ?>

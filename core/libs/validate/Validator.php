@@ -1,5 +1,5 @@
 <?php
-$config = require_once('config/config.php');
+$config = require_once(__DIR__ . '/../../../config/config.php');
 
 class Validator
 {

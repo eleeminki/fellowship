@@ -1,6 +1,6 @@
 <?php
-require_once('core/Sanitizor.php');
-require_once('core/Validator.php');
+require_once(__DIR__ . '/../sanitize/Sanitizor.php');
+require_once(__DIR__ . '/../validate/Validator.php');
 
 class Filter
 {

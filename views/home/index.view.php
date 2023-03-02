@@ -6,13 +6,13 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="public/img/one.jpg" class="d-block w-100 " alt="...">
+      <img src="/img/one.jpg" class="d-block w-100 " alt="...">
     </div>
     <div class="carousel-item">
-      <img src="public/img/two.jpg" class="d-block w-100 " alt="...">
+      <img src="/img/two.jpg" class="d-block w-100 " alt="...">
     </div>
     <div class="carousel-item">
-      <img src="public/img/three.jpg" class="d-block w-100" alt="...">
+      <img src="/img/three.jpg" class="d-block w-100" alt="...">
     </div>
   </div>
 </div>

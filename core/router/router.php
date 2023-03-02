@@ -5,14 +5,14 @@ $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 function abort(string $error)
 {
     http_response_code($error);
-    require_once('views/' . $error . '.php');
+    require_once(__DIR__ . '/../../views/response/' . $error . '.php');
     die();
 }
 
 function routeController(string $uri, array $routes)
 {
     if (array_key_exists($uri, $routes)) {
-        require_once($routes[$uri]);
+        require_once(__DIR__ . '/../../' . $routes[$uri]);
     } else {
         abort(Response::NOT_FOUND);
     }

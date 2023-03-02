@@ -1,5 +1,6 @@
 <?php
 $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHINFO_DIRNAME));
+// dd($methods);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,9 +13,9 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="shortcut icon" href="#">
   <?php if ($methods[0] === '' || $methods[0] === '/fellowship') { ?>
-    <link href="public/style.css" rel="stylesheet" />
+    <link href="/style.css" rel="stylesheet" />
   <?php } elseif ($methods[0] !== '/fellowship') { ?>
-    <link href="../public/style.css" rel="stylesheet" />
+    <link href="/../style.css" rel="stylesheet" />
   <?php } ?>
 
 </head>
@@ -23,7 +24,7 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
   <div class="container-fluid primary">
     <nav class="navbar navbar-expand-lg bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="/fellowship">Navbar</a>
+        <a class="navbar-brand" href="/fellowship/">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>

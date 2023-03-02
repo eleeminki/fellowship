@@ -12,6 +12,6 @@ $item = $db->query(
 )->fetchOrAbort();
 
 
-require_once('views/market/market.view.php');
+require_once(__DIR__ . '/../../views/market/single.view.php');
 
 ?>
