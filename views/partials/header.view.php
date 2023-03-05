@@ -24,7 +24,7 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
   <div class="container-fluid primary">
     <nav class="navbar navbar-expand-lg bg-primary">
       <div class="container">
-        <a class="navbar-brand" href="/fellowship/">Navbar</a>
+        <a class="navbar-brand" href="/">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/fellowship/login">Register/Login</a>
+              <a class="nav-link active" aria-current="page" href="/login">Register/Login</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -65,7 +65,7 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
               <a class="navbar-brand nav-link active" aria-current="page" href="#">Meetups</a>
             </li>
             <li class="nav-item">
-              <a class="navbar-brand nav-link active" aria-current="page" href="/fellowship/markets">Market</a>
+              <a class="navbar-brand nav-link active" aria-current="page" href="/markets">Market</a>
             </li>
             <li class="nav-item">
               <a class="navbar-brand nav-link active" aria-current="page" href="#">Jobs</a>

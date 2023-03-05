@@ -12,7 +12,7 @@ function abort(string $error)
 function routeController(string $uri, array $routes)
 {
     if (array_key_exists($uri, $routes)) {
-        require_once(__DIR__ . '/../../' . $routes[$uri]);
+        require_once(__DIR__ . '/../../' . trim($routes[$uri]));
     } else {
         abort(Response::NOT_FOUND);
     }
