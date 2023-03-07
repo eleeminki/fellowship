@@ -1,10 +1,10 @@
 <?php
-
+$Config = require_once(__DIR__ . '/../../config/config.php');
 class Database
 {
     public $pdo;
     public $stmt;
-    public function __construct(array $config, string $user = 'root', string $pw = '')
+    public function __construct(array $config = $Config, string $user = DB_USER, string $pw = DB_PASSWORD)
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
         $this->pdo = new PDO(
@@ -12,8 +12,8 @@ class Database
             $user,
             $pw,
             [
-                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
             ]
         );
     }

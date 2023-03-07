@@ -1,4 +1,3 @@
 <?php
-require_once(__DIR__ . '/../../views/login/index.view.php');
-
+base_path('views/login/index.view.php');
 ?>

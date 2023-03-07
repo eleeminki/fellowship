@@ -1,5 +1,7 @@
 <?php
 
+const BASE_PATH = __DIR__ . '/../';
+
 /********************** DUMP AND DIE  ***********************/
 
 function dd(array $data): void
@@ -10,15 +12,19 @@ function dd(array $data): void
   die();
 }
 
-/********************** VIEW HELPER ***********************/
+/********************** VIEW PARTIALS ***********************/
 
 function view(string $url): void
 {
   require_once(__DIR__ . '/../views/partials/' . $url . '.view.php');
 }
 
-
-/********************** FORM PROCESS CHECK ***********************/
+/********************** BASE_PATH  ***********************/
+function base_path(string $path): void
+{
+  require_once(BASE_PATH . $path);
+}
+/********************** FORM METHOD CHECK ***********************/
 
 function is_post(): bool
 {

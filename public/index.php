@@ -3,8 +3,8 @@
 session_start();
 
 require_once('functions.php');
-require_once(__DIR__ . '/../core/Response/Response.php');
-require_once(__DIR__ . '/../core/Database/Database.php');
-require_once(__DIR__ . '/../core/Router/router.php');
+base_path('core/Response/Response.php');
+base_path('core/Database/Database.php');
+base_path('core/Router/router.php');
 
 ?>

@@ -1,7 +1,3 @@
-<?php
-$methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHINFO_DIRNAME));
-// dd($methods);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,12 +8,7 @@ $methods = explode(DIRECTORY_SEPARATOR, pathinfo($_SERVER['REQUEST_URI'], PATHIN
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   <link rel="shortcut icon" href="#">
-  <?php if ($methods[0] === '' || $methods[0] === '/fellowship') { ?>
-    <link href="/style.css" rel="stylesheet" />
-  <?php } elseif ($methods[0] !== '/fellowship') { ?>
-    <link href="/../style.css" rel="stylesheet" />
-  <?php } ?>
-
+  <link href="/style.css" rel="stylesheet" />
 </head>
 
 <body>
