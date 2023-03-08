@@ -1,10 +1,10 @@
 <?php
-$Config = require_once(__DIR__ . '/../../config/config.php');
+$config= require_once(__DIR__ . '/../../config/config.php');
 class Database
 {
     public $pdo;
     public $stmt;
-    public function __construct(array $config = $Config, string $user = DB_USER, string $pw = DB_PASSWORD)
+    public function __construct(array $config, string $user = DB_USER, string $pw = DB_PASSWORD)
     {
         $dsn = 'mysql:' . http_build_query($config, '', ';');
         $this->pdo = new PDO(

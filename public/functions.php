@@ -6,9 +6,9 @@ const BASE_PATH = __DIR__ . '/../';
 
 function dd(array $data): void
 {
-  echo '<pre>';
+  // echo '<pre>';
   var_dump($data);
-  echo '</pre>';
+  // echo '</pre>';
   die();
 }
 
